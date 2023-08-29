@@ -1,12 +1,19 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { VisaView } from 'react-native-visa';
 
 export default function App() {
+  const ref = React.useRef<any>();
+
+  const startAnimation = () => {
+    ref.current.startAnimation();
+  };
+
   return (
     <View style={styles.container}>
-      <VisaView color="#32a852" style={styles.box} />
+      <VisaView style={styles.box} backdropColor={'#ffffff'} ref={ref} />
+      <Button title={'Start'} onPress={startAnimation} />
     </View>
   );
 }
